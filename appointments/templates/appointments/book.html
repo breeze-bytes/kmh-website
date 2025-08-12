@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Book Appointment - Kenneth Matiba Eye and Dental Hospital</title>
+<style>
+  body { font-family: Arial, sans-serif; max-width: 600px; margin: 2rem auto; background: #f9fafb; color: #333; }
+  h1 { color: #0b3d91; }
+  form { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 8px #ccc; }
+  label { display: block; margin-top: 10px; font-weight: bold; }
+  input, select, textarea { width: 100%; padding: 8px; margin-top: 4px; border: 1px solid #aaa; border-radius: 4px; }
+  button { margin-top: 20px; background: #0b3d91; color: white; border: none; padding: 10px 15px; border-radius: 4px; cursor: pointer; }
+  button:hover { background: #064080; }
+</style>
+</head>
+<body>
+<h1>Book an Appointment</h1>
+<form method="POST">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Submit</button>
+</form>
+</body>
+</html>

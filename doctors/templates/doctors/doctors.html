@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Doctors & Specialists - Kenneth Matiba Eye and Dental Hospital</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px auto;
+      max-width: 900px;
+      background: #f9fafb;
+      color: #333;
+    }
+    h1, h2 {
+      color: #0b3d91;
+    }
+    .doctor-card {
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 8px #ccc;
+      padding: 15px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+    .doctor-photo {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #0b3d91;
+    }
+    .doctor-details {
+      flex: 1;
+    }
+    .doctor-name {
+      font-weight: bold;
+      font-size: 1.2em;
+      margin-bottom: 4px;
+    }
+    .consultation-hours {
+      font-style: italic;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Doctors & Specialists</h1>
+
+{% for department in departments %}
+  <h2>{{ department.name }}</h2>
+  {% for doctor in department.doctors.all %}
+    <div class="doctor-card">
+      {% if doctor.photo %}
+        <img src="{{ doctor.photo.url }}" alt="{{ doctor.name }}" class="doctor-photo" />
+      {% else %}
+        <div class="doctor-photo" style="background:#ddd; display:flex; align-items:center; justify-content:center;">
+          No Image
+        </div>
+      {% endif %}
+      <div class="doctor-details">
+        <div class="doctor-name">{{ doctor.name }}</div>
+        <div>{{ doctor.qualification }} | {{ doctor.specialization }}</div>
+        <div>Experience: {{ doctor.experience_years }} years</div>
+        {% if doctor.consultation_hours %}
+          <div class="consultation-hours">Consultation Hours: {{ doctor.consultation_hours }}</div>
+        {% endif %}
+      </div>
+    </div>
+  {% empty %}
+    <p>No doctors listed under {{ department.name }}</p>
+  {% endfor %}
+{% empty %}
+  <p>No departments found.</p>
+{% endfor %}
+
+</body>
+</html>
+
