@@ -1,7 +1,8 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from .models import ContactInfo
 
-def index(request):
-    return HttpResponse("Welcome to the Contacts page")
-
-# Create your views here.
+def contact_view(request):
+    contact_info = ContactInfo.objects.first()
+    return render(request, 'contacts/contact.html', {
+        'contact_info': contact_info
+    })
