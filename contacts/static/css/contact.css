@@ -1,0 +1,33 @@
+body {
+    background-color: #f8f9fa;
+}
+header {
+    background-color: #0d6efd;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+.contact-card {
+    background-color: white;
+    border-left: 5px solid #0d6efd;
+    border-radius: 8px;
+}
+h2, h4 {
+    color: #0d6efd;
+}
+.btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+.btn-primary:hover {
+    background-color: #084298;
+    border-color: #084298;
+}
+.emergency {
+    color: red;
+    font-weight: bold;
+}
+iframe {
+    border: 0;
+    border-radius: 8px;
+}

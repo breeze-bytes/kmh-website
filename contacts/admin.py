@@ -1,4 +1,7 @@
 from django.contrib import admin
 from .models import ContactInfo
 
-admin.site.register(ContactInfo)
+@admin.register(ContactInfo)
+class ContactInfoAdmin(admin.ModelAdmin):
+    list_display = ("phone", "email", "whatsapp_link")
+

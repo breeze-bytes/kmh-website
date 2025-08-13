@@ -3,11 +3,12 @@ from django.db import models
 class ContactInfo(models.Model):
     phone = models.CharField(max_length=20)
     email = models.EmailField()
-    whatsapp = models.CharField(max_length=20, help_text="WhatsApp number with country code, e.g., 254700123456")
-    address = models.CharField(max_length=255)
-    map_embed_url = models.TextField(help_text="Google Maps embed iframe URL")
-    operating_hours = models.TextField(help_text="e.g., Mon-Fri: 8am - 6pm")
-    emergency_contact = models.CharField(max_length=100)
+    whatsapp_link = models.URLField(blank=True, null=True)
+    operating_hours = models.TextField()
+    emergency_contacts = models.TextField()
+    map_embed_url = models.URLField(
+        help_text="Paste your Google Maps embed link here"
+    )
 
     def __str__(self):
-        return f"Contact Info - {self.address}"
+        return f"Contact Info ({self.phone})"
