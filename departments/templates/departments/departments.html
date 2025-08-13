@@ -1,89 +1,199 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Departments & Services - Kenneth Matiba Eye and Dental Hospital</title>
+  <title>Departments & Services - Kenneth Matiba Hospital</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f0f4f8;
-      margin: 0; padding: 20px;
-      color: #222;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f9ff;
+      margin: 0;
+      padding: 0;
+      color: #333;
+      line-height: 1.6;
     }
+
     header {
-      background-color: #0b3d91;
+      background: linear-gradient(135deg, #0b3d91, #1e88e5);
       color: white;
-      padding: 20px;
+      padding: 40px 20px;
       text-align: center;
-      border-radius: 0 0 10px 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
     }
+
+    header h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin: 0 0 10px;
+    }
+
+    header p {
+      font-size: 1.3rem;
+      font-weight: 400;
+      margin: 0;
+      opacity: 0.9;
+    }
+
     section {
-      max-width: 900px;
-      margin: 20px auto;
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .department {
       background: white;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 0 10px #ccc;
+      padding: 30px 25px;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+      margin-bottom: 30px;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
-    h1, h2 {
-      margin-bottom: 12px;
+
+    .department:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.08);
     }
-    ul {
-      list-style: none;
-      padding-left: 0;
+
+    .department i {
+      font-size: 2.5rem;
+      color: #1e88e5;
+      flex-shrink: 0;
+      margin-top: 5px;
     }
-    li {
-      background: #e8eef8;
-      margin-bottom: 10px;
-      padding: 15px;
-      border-radius: 6px;
-      box-shadow: inset 0 0 5px #c6d1e9;
+
+    .department-content {
+      flex: 1;
     }
-    li strong {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 1.1em;
+
+    .department-content h3 {
+      margin: 0 0 8px;
+      font-size: 1.5rem;
       color: #0b3d91;
+    }
+
+    .department-content p {
+      margin: 0;
+      font-size: 1rem;
+      color: #555;
+    }
+
+    footer {
+      background: #0b3d91;
+      color: white;
+      padding: 25px 20px;
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    footer p {
+      margin: 5px 0;
+      font-size: 0.95rem;
+    }
+
+    footer a {
+      color: #ffd700;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
 
 <header>
-  <h1>Departments & Services</h1>
+  <h1>KENNETH MATIBA HOSPITAL</h1>
+  <p>Departments & Services</p>
 </header>
 
 <section>
-  <h2>Our Departments</h2>
-  <ul>
-    <li>
-      <strong>Eye Clinic</strong>
-      Comprehensive eye exams, cataract surgery, glaucoma treatment, and pediatric eye care.
-    </li>
-    <li>
-      <strong>Dental Clinic</strong>
-      General dentistry, orthodontics, oral surgery, and preventive dental care.
-    </li>
-    <li>
-      <strong>General Outpatient</strong>
-      Primary healthcare services, chronic disease management, and wellness checks.
-    </li>
-    <li>
-      <strong>Laboratory</strong>
-      Full range of diagnostic testing, blood work, and pathology services.
-    </li>
-    <li>
-      <strong>Pharmacy</strong>
-      Prescription dispensing, medication counseling, and over-the-counter products.
-    </li>
-    <li>
-      <strong>Radiology</strong>
-      X-rays, ultrasound, CT scans, and other imaging services.
-    </li>
-  </ul>
+  <div class="department">
+    <i class="fas fa-eye"></i>
+    <div class="department-content">
+      <h3>Eye Clinic</h3>
+      <p>Our Eye Clinic offers comprehensive eye examinations, cataract and glaucoma management, diabetic retinopathy screening, pediatric eye care, and surgical procedures such as cataract removal and corneal transplants. We also provide advanced diagnostic imaging and prescription eyewear services.</p>
+    </div>
+  </div>
+
+  <div class="department">
+    <i class="fas fa-tooth"></i>
+    <div class="department-content">
+      <h3>Dental Clinic</h3>
+      <p>The Dental Clinic provides general dentistry, orthodontics, root canal therapy, oral surgery, cosmetic dentistry, dental implants, pediatric dental care, and preventive treatments such as scaling, polishing, and fluoride therapy to maintain optimal oral health.</p>
+    </div>
+  </div>
+
+  <div class="department">
+    <i class="fas fa-user-md"></i>
+    <div class="department-content">
+      <h3>General Outpatient</h3>
+      <p>We offer general medical consultations, treatment of common illnesses, chronic disease management, wound care, immunizations, minor surgical procedures, and wellness checks to ensure the overall health of our community.</p>
+    </div>
+  </div>
+
+  <div class="department">
+    <i class="fas fa-vials"></i>
+    <div class="department-content">
+      <h3>Laboratory</h3>
+      <p>Our fully equipped laboratory provides diagnostic services including blood tests, urinalysis, microbiology, pathology, hematology, and biochemistry. We ensure quick turnaround times and accurate results to support clinical decision-making.</p>
+    </div>
+  </div>
+
+  <div class="department">
+    <i class="fas fa-pills"></i>
+    <div class="department-content">
+      <h3>Pharmacy</h3>
+      <p>The Pharmacy offers prescription dispensing, over-the-counter medications, vaccination services, medication counseling, chronic disease medication management, and patient education on safe drug use.</p>
+    </div>
+  </div>
+
+  <div class="department">
+    <i class="fas fa-x-ray"></i>
+    <div class="department-content">
+      <h3>Radiology</h3>
+      <p>Our Radiology Department provides digital X-rays, ultrasound scans, CT scans, and specialized imaging services. We ensure accurate diagnostics with minimal radiation exposure using the latest imaging technology.</p>
+    </div>
+  </div>
+
+  <div class="department">
+    <i class="fas fa-hands-helping"></i>
+    <div class="department-content">
+      <h3>Social Work</h3>
+      <p>The Social Work Department offers counseling services, patient advocacy, support for vulnerable individuals, community outreach programs, and assistance in navigating healthcare and social support systems.</p>
+    </div>
+  </div>
+
+  <div class="department">
+    <i class="fas fa-apple-alt"></i>
+    <div class="department-content">
+      <h3>Nutrition</h3>
+      <p>Our Nutrition Unit provides dietary assessments, customized meal planning, nutritional counseling for chronic conditions, weight management programs, and therapeutic diets to promote optimal health and recovery.</p>
+    </div>
+  </div>
+
+  <div class="department">
+    <i class="fas fa-computer"></i>
+    <div class="department-content">
+      <h3>ICT Department</h3>
+      <p>The ICT Department manages hospital information systems, provides technical support, maintains patient data security, and develops innovative digital solutions to enhance healthcare delivery and hospital operations.</p>
+    </div>
+  </div>
 </section>
+
+<footer>
+  <p>&copy; 2025 Kenneth Matiba Hospital. All rights reserved.</p>
+  <p>P.O. Box 376 - 01-020 Kenol</p>
+  <p>Email: <a href="mailto:kmedh2014@gmail.com">kmedh2014@gmail.com</a> | Phone: 0102 186 778</p>
+</footer>
 
 </body>
 </html>
