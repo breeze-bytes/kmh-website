@@ -1,7 +1,4 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 
 def index(request):
-    return HttpResponse("Welcome to the Gallery page")
-
-# Create your views here.
+    return render(request, 'gallery/gallery.html')  # Make sure template exists

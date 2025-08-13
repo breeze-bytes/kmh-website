@@ -27,7 +27,7 @@ INSTALLED_APPS = [
     'contacts',
     'patients_resources',
     'gallery',
-    'Testimonials',   # keep the case same as folder
+    'testimonials',   # keep the case same as folder
     'careers',
 ]
 

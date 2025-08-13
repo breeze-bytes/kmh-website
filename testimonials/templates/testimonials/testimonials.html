@@ -1,0 +1,146 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testimonials - Kenneth Matiba Eye & Dental Hospital</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Testimonials section */
+    .testimonials-section {
+      padding: 4rem 2rem;
+      background: #f1f1f1;
+      text-align: center;
+    }
+
+    .testimonials-section h1 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: #0a0a0a;
+    }
+
+    .testimonial-slider {
+      position: relative;
+      max-width: 800px;
+      margin: 0 auto;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .slide {
+      flex-shrink: 0;
+      width: 100%;
+      padding: 2rem;
+      box-sizing: border-box;
+    }
+
+    .slide p {
+      font-size: 1.2rem;
+      font-style: italic;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+
+    .slide .author {
+      font-weight: bold;
+      color: #0a74da;
+    }
+
+    /* Slider Controls */
+    .slider-controls {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+    }
+
+    .slider-controls button {
+      background: rgba(10, 10, 10, 0.5);
+      border: none;
+      color: white;
+      font-size: 2rem;
+      padding: 0.2rem 0.8rem;
+      cursor: pointer;
+      border-radius: 50%;
+      transition: 0.3s;
+    }
+
+    .slider-controls button:hover {
+      background: rgba(10, 10, 10, 0.8);
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="main-nav">
+    <a href="{% url 'home' %}" class="logo">KMH<span>Hospital</span></a>
+    <div class="nav-links">
+    
+    </div>
+  </nav>
+
+  <!-- Testimonials Section -->
+  <section class="testimonials-section">
+    <h1>What Our Patients Say</h1>
+    <div class="testimonial-slider">
+      <div class="slides">
+        <div class="slide">
+          <p>"Outstanding service and professional care! Highly recommend KMH Hospital."</p>
+          <div class="author">– John Doe</div>
+        </div>
+        <div class="slide">
+          <p>"The eye and dental services are top-notch. Friendly staff and excellent treatment."</p>
+          <div class="author">– Mary Wanjiku</div>
+        </div>
+        <div class="slide">
+          <p>"I always feel cared for. The specialists are very knowledgeable and compassionate."</p>
+          <div class="author">– Peter Otieno</div>
+        </div>
+      </div>
+      <div class="slider-controls">
+        <button class="prev">&#10094;</button>
+        <button class="next">&#10095;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 Kenneth Matiba Eye & Dental Hospital. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // Testimonial Slider
+    const slides = document.querySelector('.testimonial-slider .slides');
+    const testimonialSlides = document.querySelectorAll('.testimonial-slider .slide');
+    const prevBtn = document.querySelector('.testimonial-slider .prev');
+    const nextBtn = document.querySelector('.testimonial-slider .next');
+    let index = 0;
+
+    function showSlide(i) {
+      index = i;
+      if(index < 0) index = testimonialSlides.length - 1;
+      if(index >= testimonialSlides.length) index = 0;
+      slides.style.transform = `translateX(${-index * 100}%)`;
+    }
+
+    prevBtn.addEventListener('click', () => showSlide(index - 1));
+    nextBtn.addEventListener('click', () => showSlide(index + 1));
+
+    // Auto slide every 6 seconds
+    setInterval(() => showSlide(index + 1), 6000);
+  </script>
+
+</body>
+</html>

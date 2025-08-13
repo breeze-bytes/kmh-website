@@ -1,59 +1,68 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Kenneth Matiba Eye and Dental Hospital</title>
-  <!-- You can add your CSS links here -->
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f9fafb;
-      margin: 0;
-      padding: 0;
-    }
-    header {
-      background-color: #0b3d91;
-      color: white;
-      padding: 40px 20px;
-      text-align: center;
-    }
-    section {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-    h1, h2 {
-      margin-bottom: 20px;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kenneth Matiba Eye & Dental Hospital</title>
+  <link rel="stylesheet" href="{% static 'css/home.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-<header>
-  <h1>Welcome to Kenneth Matiba Eye and Dental Hospital</h1>
-  <p>Your health is our priority. Exceptional care, advanced technology.</p>
-  <a href="/appointments" style="background: white; color: #0b3d91; padding: 10px 20px; border-radius: 25px; text-decoration: none; font-weight: bold;">Book an Appointment</a>
-</header>
+  <!-- Navbar -->
+  <nav class="main-nav">
+    <a href="{% url 'home' %}" class="logo">KMH<span>Hospital</span></a>
+    <div class="nav-links">
+      <a href="{% url 'home' %}">Home</a>
+      <a href="{% url 'about' %}">About Us</a>
+      {# Removed contact and services links #}
+    </div>
+  </nav>
 
-<section id="highlights">
-  <h2>Our Highlights</h2>
-  <ul>
-    <li>Compassionate Care - We treat every patient with kindness and respect.</li>
-    <li>Expert Doctors - Highly qualified specialists in all fields.</li>
-    <li>Advanced Equipment - State-of-the-art medical technology for accurate diagnoses.</li>
-  </ul>
-</section>
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="hero-overlay"></div> <!-- optional overlay for text readability -->
+    <div class="hero-content">
+      <h1>Welcome to Kenneth Matiba Eye & Dental Hospital</h1>
+      <p>Your health is our priority — experience professional eye and dental care.</p>
+    </div>
+  </section>
 
-<section id="testimonials">
-  <h2>What Our Patients Say</h2>
-  <blockquote>
-    <p>"Amazing service and caring staff!" - Jane Doe</p>
-  </blockquote>
-  <blockquote>
-    <p>"Very professional and friendly dentists." - John Smith</p>
-  </blockquote>
-</section>
+  <!-- Highlights Section -->
+  <section class="highlights-section">
+    <div class="highlights-container">
+      <div class="highlight-card">
+        <i class="fas fa-eye"></i>
+        <h3>Advanced Eye Care</h3>
+        <p>State-of-the-art technology for accurate diagnosis and treatment.</p>
+      </div>
+      <div class="highlight-card">
+        <i class="fas fa-tooth"></i>
+        <h3>Expert Dental Services</h3>
+        <p>Comprehensive dental care for all ages, with personalized treatment.</p>
+      </div>
+      <div class="highlight-card">
+        <i class="fas fa-user-md"></i>
+        <h3>Qualified Specialists</h3>
+        <p>Our team consists of experienced doctors and healthcare professionals.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Quick Links Section -->
+  <section class="quick-links-section">
+    <h2>Quick Links</h2>
+    <div class="quick-links-container">
+      <a href="{% url 'about' %}" class="quick-link-card">About Us</a>
+      {# All other links removed to prevent errors #}
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 Kenneth Matiba Eye & Dental Hospital. All Rights Reserved.</p>
+  </footer>
 
 </body>
 </html>

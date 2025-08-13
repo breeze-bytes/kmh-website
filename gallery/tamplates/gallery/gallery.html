@@ -1,0 +1,206 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery - Kenneth Matiba Eye & Dental Hospital</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Gallery container */
+    .gallery-section {
+      padding: 4rem 2rem;
+      background: #f9f9f9;
+    }
+
+    .gallery-section h1 {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: #0a0a0a;
+    }
+
+    /* Category filters */
+    .gallery-categories {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    .gallery-categories button {
+      background: #0a74da;
+      color: white;
+      border: none;
+      margin: 0 0.5rem;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    .gallery-categories button:hover,
+    .gallery-categories button.active {
+      background: #074a9e;
+    }
+
+    /* Image grid */
+    .gallery-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .gallery-container img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+
+    .gallery-container img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    /* Image slider */
+    .slider {
+      position: relative;
+      max-width: 100%;
+      margin: 2rem auto;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+
+    .slides {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+
+    .slides img {
+      width: 100%;
+      flex-shrink: 0;
+    }
+
+    .slider-controls {
+      position: absolute;
+      top: 50%;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      transform: translateY(-50%);
+    }
+
+    .slider-controls button {
+      background: rgba(10, 10, 10, 0.5);
+      border: none;
+      color: white;
+      font-size: 2rem;
+      padding: 0.2rem 0.8rem;
+      cursor: pointer;
+      border-radius: 50%;
+      transition: 0.3s;
+    }
+
+    .slider-controls button:hover {
+      background: rgba(10, 10, 10, 0.8);
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="main-nav">
+    <a href="{% url 'home' %}" class="logo">KMH<span>Hospital</span></a>
+    <div class="nav-links">
+    </div>
+  </nav>
+
+  <!-- Hero Section / Slider -->
+  <section class="slider">
+    <div class="slides">
+      <img src="{% static 'images/events1.jpg' %}" alt="Hospital Event 1">
+      <img src="{% static 'images/departments1.jpg' %}" alt="Departments">
+      <img src="{% static 'images/community1.jpg' %}" alt="Community Outreach">
+    </div>
+    <div class="slider-controls">
+      <button class="prev">&#10094;</button>
+      <button class="next">&#10095;</button>
+    </div>
+  </section>
+
+  <!-- Category Filters -->
+  <section class="gallery-section">
+    <h1>Hospital Gallery</h1>
+    <div class="gallery-categories">
+      <button class="active" data-category="all">All</button>
+      <button data-category="events">Events</button>
+      <button data-category="departments">Departments</button>
+      <button data-category="community">Community</button>
+    </div>
+
+    <!-- Image Grid -->
+    <div class="gallery-container">
+      <!-- Events -->
+      <img src="{% static 'images/events1.jpg' %}" alt="Event 1" data-category="events">
+      <img src="{% static 'images/events2.jpg' %}" alt="Event 2" data-category="events">
+      <!-- Departments -->
+      <img src="{% static 'images/departments1.jpg' %}" alt="Departments 1" data-category="departments">
+      <img src="{% static 'images/departments2.jpg' %}" alt="Departments 2" data-category="departments">
+      <!-- Community -->
+      <img src="{% static 'images/community1.jpg' %}" alt="Community 1" data-category="community">
+      <img src="{% static 'images/community2.jpg' %}" alt="Community 2" data-category="community">
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2025 Kenneth Matiba Eye & Dental Hospital. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // Image Slider
+    const slides = document.querySelector('.slides');
+    const images = document.querySelectorAll('.slides img');
+    const prevBtn = document.querySelector('.prev');
+    const nextBtn = document.querySelector('.next');
+    let index = 0;
+
+    function showSlide(i) {
+      index = i;
+      if(index < 0) index = images.length - 1;
+      if(index >= images.length) index = 0;
+      slides.style.transform = `translateX(${-index * 100}%)`;
+    }
+
+    prevBtn.addEventListener('click', () => showSlide(index - 1));
+    nextBtn.addEventListener('click', () => showSlide(index + 1));
+
+    // Auto slide every 5 seconds
+    setInterval(() => showSlide(index + 1), 5000);
+
+    // Category filter
+    const categoryButtons = document.querySelectorAll('.gallery-categories button');
+    const galleryImages = document.querySelectorAll('.gallery-container img');
+
+    categoryButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        categoryButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const category = btn.dataset.category;
+
+        galleryImages.forEach(img => {
+          if(category === 'all' || img.dataset.category === category) {
+            img.style.display = 'block';
+          } else {
+            img.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
