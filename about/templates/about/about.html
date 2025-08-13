@@ -37,6 +37,22 @@
       background: #202f50;
       border-top-color: #0074d9;
     }
+    /* Dark mode for cards/modals inside light sections */
+    body.dark .role-card {
+      background: #182235;
+      color: #e0e0e0;
+    }
+    body.dark .role-card h4 {
+      color: #9ec3ff;
+    }
+    body.dark .modal-content {
+      background: #1e1e1e;
+      color: #e0e0e0;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.6);
+    }
+    body.dark .modal-close { color: #bbb; }
+    body.dark .modal-close:hover { color: #fff; }
+
     body.dark footer {
       background-color: #00235c;
       color: #cfcfcf;
@@ -107,7 +123,8 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: rgba(0, 30, 77, 0.55);
+      /* Light-mode overlay added for readability */
+      background: rgba(0,0,0,0.35);
       pointer-events: none;
       transition: background 0.3s;
     }
@@ -117,35 +134,22 @@
       max-width: 900px;
       margin: auto;
     }
+
+    /* Hero text brighter & clearer */
     .hero-content h2 {
       font-size: 2.5rem;
       font-weight: bold;
-      color: #ffdd00;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+      color: #ffeb3b; /* bright yellow */
+      text-shadow: 3px 3px 12px rgba(0,0,0,0.9);
     }
     .hero-content p {
       font-size: 1.2rem;
-      color: #ffffff;
-      text-shadow: 1px 1px 6px rgba(0,0,0,0.6);
+      color: #ffffff; /* pure white */
+      text-shadow: 2px 2px 10px rgba(0,0,0,0.9);
       margin-bottom: 30px;
     }
 
-    /* Animated Hospital Stats */
-    .hospital-stats {
-      display: flex;
-      justify-content: center;
-      gap: 40px;
-      margin-top: 20px;
-      color: #ffdd00;
-      font-weight: bold;
-      font-size: 1.25rem;
-      text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
-    }
-    .hospital-stats div {
-      min-width: 140px;
-    }
-
-    /* Mission & Vision Boxes */
+    /* Mission & Vision Boxes (readability tuned) */
     .highlight-boxes {
       display: flex;
       flex-wrap: wrap;
@@ -167,10 +171,28 @@
     }
     .highlight h3 {
       margin-top: 0;
-      color: #ffdd00;
+      color: #ffeb3b;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.85);
     }
     .highlight p {
-      color: white;
+      color: #ffffff;
+      font-weight: 500;
+      text-shadow: 1px 1px 6px rgba(0,0,0,0.8);
+    }
+
+    /* Animated Hospital Stats */
+    .hospital-stats {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 20px;
+      color: #ffdd00;
+      font-weight: bold;
+      font-size: 1.25rem;
+      text-shadow: 1px 1px 5px rgba(0,0,0,0.7);
+    }
+    .hospital-stats div {
+      min-width: 140px;
     }
 
     /* Container */
@@ -229,8 +251,8 @@
       100% { transform: scale(1); }
     }
     /* Slight accent color variation on cards */
-    .value-card:nth-child(1) { border-top-color: #0b3d91; } /* blue */
-    .value-card:nth-child(2) { border-top-color: #005bb5; } /* darker blue */
+    .value-card:nth-child(1) { border-top-color: #0b3d91; }
+    .value-card:nth-child(2) { border-top-color: #005bb5; }
     .value-card:nth-child(3) { border-top-color: #2978b5; }
     .value-card:nth-child(4) { border-top-color: #5191d3; }
     .value-card:nth-child(5) { border-top-color: #2a5c8c; }
@@ -356,13 +378,73 @@
         font-size: 1.1rem;
       }
     }
+ /* Mission & Vision Section */
+.mission-vision-section {
+  padding: 50px 20px;
+  background: #f0f6ff;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.mv-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.mv-card {
+  flex: 1 1 300px;
+  background: white;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+  border-top: 5px solid #1e88e5;
+  text-align: center;
+  transition: background 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.mv-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.mv-card h3 {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+  color: #1e88e5;
+}
+
+.mv-card p {
+  font-size: 1rem;
+  color: #444;
+  line-height: 1.6;
+}
+
+/* Dark Mode */
+body.dark-mode .mission-vision-section {
+  background: #0a192f;
+}
+
+body.dark-mode .mv-card {
+  background: #112240;
+  border-top-color: #4dabf7;
+}
+
+body.dark-mode .mv-card h3 {
+  color: #4dabf7;
+}
+
+body.dark-mode .mv-card p {
+  color: #d0e1f9;
+}
+
   </style>
 </head>
 <body>
 
 <header>
   <h1>About Kenneth Matiba Eye and Dental Hospital</h1>
-  <button id="darkModeToggle" aria-label="Toggle Dark Mode">🌙 Dark Mode</button>
+  <button id="darkModeToggle" aria-label="Toggle Dark Mode" aria-pressed="false">🌙 Dark Mode</button>
 </header>
 
 <!-- Hero Section with Mission & Vision -->
@@ -396,11 +478,45 @@
   <section data-aos="fade-up">
     <h2>History & Mission</h2>
     <p>
-      Kenneth Matiba Eye and Dental Hospital was established to provide quality, affordable, and compassionate healthcare to the community. 
-      We are dedicated to delivering the highest standard of preventive, promotive, curative, and rehabilitative services, 
-      with a special focus on eye and dental care.
+      Kenneth Matiba Eye and Dental Hospital has a rich history rooted in a deep commitment to improving healthcare in the region.
+      Established in <strong>2015</strong> in <strong>Kenol</strong>, the hospital was named in honor of the late 
+      <strong>Kenneth Matiba</strong>, a visionary leader who inspired the values of service, dedication, and excellence.
+    </p>
+    <p>
+      Initially operating as a specialized <em>Eye and Dental Clinic</em>, the facility quickly earned a reputation for its 
+      compassionate care and skilled medical professionals. In <strong>2024</strong>, the hospital relocated to 
+      <strong>Makenji</strong>, where it continues to grow and serve a larger community.
+    </p>
+    <p>
+      Today, Kenneth Matiba Eye and Dental Hospital is evolving into a fully-fledged <strong>Level 4 Hospital</strong>, 
+      expanding its services beyond specialized care. New outpatient facilities and emergency structures are currently 
+      under development to meet the growing needs of patients and provide comprehensive healthcare services under one roof.
+    </p>
+    <p>
+      Guided by our mission to deliver the highest quality <strong>preventive, promotive, curative, and rehabilitative care</strong>,
+      we remain dedicated to ensuring every patient receives compassionate, professional, and accessible healthcare.
     </p>
   </section>
+<section class="mission-vision-section">
+  <div class="mv-container">
+    <div class="mv-card mission-card">
+      <h3>Our Mission</h3>
+      <p>
+        To provide exceptional, affordable, and accessible healthcare services,
+        focusing on eye and dental care, while promoting patient satisfaction
+        and community wellness.
+      </p>
+    </div>
+    <div class="mv-card vision-card">
+      <h3>Our Vision</h3>
+      <p>
+        To be the leading center of excellence in specialized eye and dental
+        care in Kenya, recognized for innovation, compassion, and professionalism.
+      </p>
+    </div>
+  </div>
+</section>
+
 
   <!-- Organizational Structure -->
   <section data-aos="fade-up" style="background:#f0f6ff;">
@@ -470,25 +586,26 @@
 <script>
   AOS.init();
 
-  // Dark Mode Toggle
+  // Dark Mode Toggle (with OS preference + proper label/aria)
   const toggleBtn = document.getElementById('darkModeToggle');
   const body = document.body;
 
-  // Load saved mode from localStorage
-  if (localStorage.getItem('darkMode') === 'enabled') {
-    body.classList.add('dark');
-    toggleBtn.textContent = '☀️ Light Mode';
+  function setDarkMode(on) {
+    body.classList.toggle('dark', on);
+    localStorage.setItem('darkMode', on ? 'enabled' : 'disabled');
+    toggleBtn.textContent = on ? '☀️ Light Mode' : '🌙 Dark Mode';
+    toggleBtn.setAttribute('aria-pressed', on ? 'true' : 'false');
   }
 
+  (function initTheme(){
+    const saved = localStorage.getItem('darkMode');
+    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const useDark = saved ? saved === 'enabled' : prefersDark;
+    setDarkMode(useDark);
+  })();
+
   toggleBtn.addEventListener('click', () => {
-    body.classList.toggle('dark');
-    if(body.classList.contains('dark')) {
-      toggleBtn.textContent = '☀️ Light Mode';
-      localStorage.setItem('darkMode', 'enabled');
-    } else {
-      toggleBtn.textContent = '🌙 Dark Mode';
-      localStorage.setItem('darkMode', 'disabled');
-    }
+    setDarkMode(!body.classList.contains('dark'));
   });
 
   // Animated Hospital Stats
@@ -508,7 +625,6 @@
     };
     updateCount();
   });
-
 </script>
 </body>
 </html>
